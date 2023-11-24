@@ -25,7 +25,7 @@ end
 
 def get_plots(folder)
   plots = []
-  (0..32).each do |i|
+  (1..32).each do |i|
     plot = "#{folder}/#{i}.plot"
     plots.push(read_plot_file(plot)) if File.exist? plot
   end
