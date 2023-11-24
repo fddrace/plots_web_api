@@ -33,5 +33,6 @@ def get_plots(folder)
 end
 
 get '/api/plots' do
+  content_type 'application/json'
   get_plots(ENV['PLOTS_DIR']).to_json
 end
