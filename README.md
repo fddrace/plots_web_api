@@ -2,6 +2,6 @@
 http web api for F-DDrace plots
 
 ```
-gem install sinatra
+gem install sinatra dotenv
 ruby ./plots_web_api.rb
 ```

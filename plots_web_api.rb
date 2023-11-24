@@ -3,6 +3,7 @@
 require 'date'
 require 'json'
 require 'sinatra'
+require 'dotenv/load'
 
 def read_plot_file(plot_file)
   fields = [:username, :display_name, :expire_date]
@@ -22,15 +23,15 @@ def read_plot_file(plot_file)
   p data
 end
 
-def get_plots
+def get_plots(folder)
   plots = []
   (0..32).each do |i|
-    plot = "#{i}.plot"
+    plot = "#{folder}/#{i}.plot"
     plots.push(read_plot_file(plot)) if File.exist? plot
   end
   plots
 end
 
 get '/api/plots' do
-  get_plots.to_json
+  get_plots(ENV['PLOTS_DIR']).to_json
 end
